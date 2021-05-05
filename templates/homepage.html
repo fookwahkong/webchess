@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<head>
+  <title>ChessFlask</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+  <div class="hero-image">
+    <div class="hero-text">
+      <h1 style="font-size: 50px;">Welcome to ChessFlask!</h1>
+      <form action="{{ ui.next_link }}" method="post">
+        <p>White player: <input type="text" name="wname" value="whitie" /><br /></p>
+        <p>Black player: <input type="text" name="bname" value="blackie" /><br /></p>
+        <input type="submit" value="Start new game" />
+      </form>
+    </div>
+  </div>
+</body>

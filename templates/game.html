@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+  <title>Chess Game</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body style="background-color: #ffd9ea;">
+  <div style="text-align: center;">
+    <table
+      style="
+        border: 2px solid #000000;
+        margin: auto;
+        border-spacing: 0px;
+        padding: 5px;
+      "
+    >
+      {% for row in ui.board %}
+      <tr>
+        {% for cell in row %}
+        <td class="{{ cell.type }}">
+          {{ cell.text }}
+        </td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
+
+    <form action="{{ ui.next_link }}" method="post">
+      <!-- hidden field to pass variables -->    
+      <input type="hidden" name="variables" value="{{ variables }}" />
+      <p>{{ ui.inputlabel }}</p>
+      <input type="text" name="move" value="" />
+      <p>{{ ui.errmsg }}</p>
+      <input type="submit" value="{{ ui.btnlabel }}" />
+    </form>
+    <form action="/undo" method="post">
+      <input type="submit" value="Undo" />
+    </form>
+  </div>
+</body>
